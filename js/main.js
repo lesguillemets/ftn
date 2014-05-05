@@ -10,7 +10,7 @@ function myfunction(){
   console.log(results)
   var conda=("OR(" + results.join(", ") + ")");
 
-  var linesb = bdata.value.replace(/\s+/g,"").split("\n");
+  var linesb = bdata.value.replace(/ +/g,"").split("\n");
   var results = linesb.map(func);
   console.log(results)
   var condb=("OR(" + results.join(", ") + ")");
