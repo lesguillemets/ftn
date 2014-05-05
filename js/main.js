@@ -33,7 +33,7 @@ function createParser(n){
         var lowhigh = element.split('-');
         string += "AND(" + cell + ">=" + lowhigh[0] + ',' + cell + "<=" + lowhigh[1] +"),"
       } else {
-        string += cell+'="'+element + '",'
+        string += "TEXT("+cell+')="'+element + '",'
       }
     }
     string = string.slice(0,-1);
