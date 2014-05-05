@@ -8,12 +8,12 @@ function myfunction(){
   var linesa = adata.value.replace(/ +/g,"").split("\n");
   var results = linesa.map(func);
   console.log(results)
-  var conda=("OR(" + results.join(", ") + ")");
+  var conda=("OR(" + results.join() + ")");
 
   var linesb = bdata.value.replace(/ +/g,"").split("\n");
   var results = linesb.map(func);
   console.log(results)
-  var condb=("OR(" + results.join(", ") + ")");
+  var condb=("OR(" + results.join() + ")");
   
   var cond = "IF(" + conda + ', "A", IF(' + condb + ',"B","C"))'
   document.getElementById("result").value = cond
@@ -36,7 +36,8 @@ function createParser(n){
         string += cell+'="'+element + '",'
       }
     }
-    string +=")"
+    string = string.slice(0,-1);
+    string +=")";
     console.log(string);
     return string;
   }
