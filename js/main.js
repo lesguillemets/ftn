@@ -30,10 +30,10 @@ function createParser(n){
       var hyph = element.indexOf('-')
       console.log(element + "and" + hyph);
       if (hyph > 0){
-        var [low,high] = element.split('-');
-        string += "AND(" + cell + ">=" + low + ',' + cell + "<=" + high +"),"
+        var lowhigh = element.split('-');
+        string += "AND(" + cell + ">=" + lowhigh[0] + ',' + cell + "<=" + lowhigh[1] +"),"
       } else {
-        string += cell+'='+element + ','
+        string += cell+'="'+element + '",'
       }
     }
     string +=")"
