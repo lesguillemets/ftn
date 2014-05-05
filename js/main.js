@@ -15,7 +15,7 @@ function myfunction(){
   console.log(results)
   var condb=("OR(" + results.join() + ")");
   
-  var cond = "IF(" + conda + ', "A", IF(' + condb + ',"B","C"))'
+  var cond = "=IF(" + conda + ', "A", IF(' + condb + ',"B","C"))'
   document.getElementById("result").value = cond
 }
 

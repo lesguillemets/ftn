@@ -2,14 +2,16 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <style> table,th,td { border:1px solid black; } </style>
   <title>Helper (beta)</title>
 </head>
 <body>
   <h1>helper (beta)</h1>
-  <input id="firstline" type="number"><br />
-  deliverer a<br />
+  一行目の番号
+  <input id="firstline" type="number" value="1"><br />
+  Aさん担当領域<br />
   <textarea id="delivA" name="text" cols="50" rows="5"></textarea><br />
-  deliverer b<br />
+  Bさん担当領域<br />
   <textarea id="delivB" name="text" cols="50" rows="5"></textarea>
   <input id="boxb" type="submit" onclick="myfunction()">
   <script src="js/main.js"></script>
@@ -17,5 +19,67 @@
   ==================<br />
   output here. Copy and use it.<br />
   <textarea id="result" name="result" cols="100" rows="5"></textarea>
+  <h2>使い方</h2>
+  <h3>何をするか</h3>
+  <ul>
+    <li>上の空欄に入力</li>
+    <li>→ボタン押す（実際にはどこにも送信されません）</li>
+    <li>→下のところに出てくる式をコピー，エクセル住所録の右のほう，一人目の住所があるところと同じ列に貼り付け</li>
+    <li>→あのエクセルのセルの右下にカーソル持って行くとカーソルが十字キーになってでろでろでろっと下まで伸ばしていけるアレで下まで持っていく</li>
+    <li>→とその列にAさんBさんCさんの誰の担当かが出てくるのでそれで sort なりなんなり</li>
+</ul>
+  <h3>何を入れるか</h3>
+  <ol>
+    <li>「一行目の番号」のところ: excel 上で扱いたいデータの一番上のところが何行目にあるか</li>
+    <li>配達員A の担当区域(書き方は後述)</li>
+    <li>配達員B の担当区域</li>
+    <li>C さんは残りを担当します．</li>
+  </ol>
+  <h3>担当区域の書き方</h3>
+  てもとの Excel ファイルで各列に入ってるそれぞれに相当するのを半角コンマで区切って入力します．数字の半角/全角はもとのファイルに合わせて（ただし全角だと範囲選択ができません）．<br />
+  範囲選択：例えば 3丁目から7丁目までなら 3-7 というふうに書けばよろしい．
+  例えば
+    <table style="width:300px">
+    <tr>
+      <td>東町</td>
+      <td>3</td>		
+      <td>5</td>
+      </tr>
+    <tr>
+      <td>西町</td>
+      <td>4</td>		
+      <td></td>
+    </tr>
+    <tr>
+      <td>北町</td>
+      <td>5</td>		
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>北町</td>
+      <td>7</td>		
+      <td>8</td>
+    </tr>
+    </table>
+    みたいな感じで住所を管理していて，東町の3丁目を担当させたいなら
+    <pre>東町,3</pre>
+    というような書き方をします．
+    <p>
+      例えば上の感じで管理していて，東町4丁目，北町の2,5,7,北町の3の4, 西町の3から8丁目を担当させたいなら<br />
+      <textarea id="delivex" name="text" cols="50" rows="5">
+東町,4
+北町,2
+北町,3,4
+北町,5
+北町,7
+西町,3-8
+      </textarea><br />
+    という感じになります．
+<h3>known bugs</h3>
+  <ul>
+    <li>空行とか余分な空白が入ると多分動きません</li>
+    <li>住所は左端A列を先頭に書かれてる必要があります</li>
+    <li>こんな大鉈振り回すとか(</li>
+  </ul>
 </body>
 </html>
