@@ -5,7 +5,7 @@ function myfunction(){
   if(!n){n=1;}
   var func = createParser(n);
   
-  var linesa = adata.value.replace(/\s+/g,"").split("\n");
+  var linesa = adata.value.replace(/ +/g,"").split("\n");
   var results = linesa.map(func);
   console.log(results)
   var conda=("OR(" + results.join(", ") + ")");
@@ -15,7 +15,7 @@ function myfunction(){
   console.log(results)
   var condb=("OR(" + results.join(", ") + ")");
   
-  var cond = "IF(" + conda + ", 'A', IF(" + condb + ",'B','C'))"
+  var cond = "IF(" + conda + ', "A", IF(' + condb + ',"B","C"))'
   document.getElementById("result").value = cond
 }
 
